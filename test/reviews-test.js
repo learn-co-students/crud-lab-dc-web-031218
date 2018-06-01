@@ -132,8 +132,6 @@ describe("Reviews Component", () => {
         { id: 2, restaurantId: 2, text: "it was very bad" }
       ]
     });
-    console.log("res", store.getState().restaurants);
-
     let restaurantId = 1;
     const wrapper = mount(<Reviews store={store} restaurantId={1} />);
     expect(wrapper.find(Review)).to.have.length(2);
@@ -153,7 +151,6 @@ describe("Reviews Component", () => {
     reviewForm.simulate("submit", { preventDefault() {} });
     textField.simulate("change", { target: { value: "Ciao" } });
     reviewForm.simulate("submit", { preventDefault() {} });
-    console.log(store.getState().reviews);
     console.log(store.getState().restaurants);
     let ids = store.getState().restaurants.map(restaurant => restaurant.id);
     expect(new Set(ids).size === ids.length).to.equal(true);

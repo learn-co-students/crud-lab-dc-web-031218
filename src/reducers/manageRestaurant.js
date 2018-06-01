@@ -18,6 +18,7 @@ export default function manageRestaurants(
       };
     case "ADD_REVIEW":
       return {
+        restaurants: state.restaurants,
         reviews: [
           ...state.reviews,
           {
@@ -27,6 +28,13 @@ export default function manageRestaurants(
           }
         ]
       };
+
+    // case "ADD_REVIEW":
+    //   const review = Object.assign({}, action.review, { id: cuidFn() });
+    //   return Object.assign({}, state, {
+    //     reviews: state.reviews.concat(review)
+    //   });
+
     case "DELETE_REVIEW":
       return {
         reviews: state.reviews.filter(review => review.id !== action.id)
